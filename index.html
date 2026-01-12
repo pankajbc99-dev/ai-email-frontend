@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>AI Email Generator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f8;
+      padding: 40px;
+    }
+    .box {
+      max-width: 600px;
+      margin: auto;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+    }
+    textarea {
+      width: 100%;
+      height: 100px;
+      margin-bottom: 10px;
+    }
+    button {
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+    pre {
+      background: #eee;
+      padding: 10px;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="box">
+    <h2>AI Email Generator</h2>
+
+    <textarea id="prompt" placeholder="Enter email topic..."></textarea>
+    <button onclick="generateEmail()">Generate Email</button>
+
+    <h3>Generated Email:</h3>
+    <pre id="result"></pre>
+  </div>
+
+  <script>
+    async function generateEmail() {
+      const prompt = document.getElementById("prompt").value;
+      const resultBox = document.getElementById("result");
+
+      resultBox.innerText = "Generating...";
+
+      try {
+        const response = await fetch(
+          "https://ai-email-backend-y4px.onrender.com/api/generate",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ prompt })
+          }
+        );
+
+        const data = await response.json();
+
+        if (data.email) {
+          resultBox.innerText = data.email;
+        } else {
+          resultBox.innerText = JSON.stringify(data, null, 2);
+        }
+      } catch (err) {
+        resultBox.innerText = "Error: " + err.message;
+      }
+    }
+  </script>
+
+</body>
+</html>
