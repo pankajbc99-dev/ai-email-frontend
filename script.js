@@ -1,13 +1,18 @@
 async function generateEmail() {
-  const prompt = document.getElementById("prompt").value;
+  const promptInput = document.getElementById("prompt");
   const output = document.getElementById("output");
+  const loading = document.getElementById("loading");
+  const result = document.getElementById("result");
+
+  const prompt = promptInput.value.trim();
 
   if (!prompt) {
-    output.innerText = "Please enter a prompt.";
+    alert("Please enter a prompt");
     return;
   }
 
-  output.innerText = "Generating...";
+  loading.classList.remove("hidden");
+  result.classList.add("hidden");
 
   try {
     const response = await fetch(
@@ -23,12 +28,18 @@ async function generateEmail() {
 
     const data = await response.json();
 
-    if (data.email) {
-      output.innerText = data.email;
+    if (data.generatedText) {
+      output.textContent = data.generatedText;
     } else {
-      output.innerText = JSON.stringify(data, null, 2);
+      output.textContent = "Error: " + JSON.stringify(data);
     }
+
+    result.classList.remove("hidden");
+
   } catch (error) {
-    output.innerText = "Error connecting to backend.";
+    output.textContent = "Error connecting to backend";
+    result.classList.remove("hidden");
+  } finally {
+    loading.classList.add("hidden");
   }
 }
