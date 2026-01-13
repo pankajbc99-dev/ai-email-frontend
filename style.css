@@ -1,0 +1,30 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f6f8;
+}
+
+.container {
+  width: 600px;
+  margin: 50px auto;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+}
+
+button {
+  margin-top: 10px;
+  padding: 10px 15px;
+  cursor: pointer;
+}
+
+pre {
+  background: #eee;
+  padding: 10px;
+  white-space: pre-wrap;
+}
