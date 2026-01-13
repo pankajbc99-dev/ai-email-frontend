@@ -1,27 +1,38 @@
-<script>
-async function generateEmail() {
-  const prompt = document.getElementById("prompt").value;
-  const output = document.getElementById("output");
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Email Generator</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
 
-  output.innerText = "Generating...";
+  <div class="container">
+    <h1>✉️ AI Email Generator</h1>
+    <p class="subtitle">
+      Generate professional emails using Generative AI (Google Gemini)
+    </p>
 
-  try {
-    const res = await fetch(
-      "https://ai-email-backend-y4px.onrender.com/api/generate",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ prompt })
-      }
-    );
+    <textarea
+      id="prompt"
+      placeholder="Example: Write a professional leave email for school..."
+    ></textarea>
 
-    const data = await res.json();
-    output.innerText = data.generatedText || JSON.stringify(data, null, 2);
+    <button onclick="generateEmail()">Generate Email</button>
 
-  } catch (err) {
-    output.innerText = "Error generating email";
-  }
-}
-</script>
+    <div id="loading" class="hidden">Generating...</div>
+
+    <div id="result" class="result hidden">
+      <h3>Generated Email</h3>
+      <pre id="output"></pre>
+    </div>
+  </div>
+
+  <footer>
+    Built for IBM SkillsBuild CSRBOX Internship 🌍 SDG 4 – Quality Education
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
