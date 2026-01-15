@@ -5,39 +5,54 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>AI Email Generator</title>
 
-  <link rel="stylesheet" href="styles.css"/>
+  <!-- Modern Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <div class="bg"></div>
+  <!-- Background -->
+  <div class="bg-gradient"></div>
 
-  <main class="app">
-    <header>
+  <main class="app-container">
+    <!-- Header -->
+    <header class="hero">
       <h1>AI Email Generator</h1>
-      <p>Generate professional emails using Generative AI</p>
+      <p>Create professional emails instantly using Generative AI</p>
     </header>
 
-    <section class="glass">
-      <textarea id="prompt" placeholder="Example: Write a professional leave email to my manager"></textarea>
+    <!-- Input Card -->
+    <section class="card glass">
+      <label for="prompt">Describe your email</label>
+      <textarea
+        id="prompt"
+        placeholder="Example: Write a formal leave email to my manager for 2 days"
+      ></textarea>
 
       <button id="generateBtn">
-        <span>Generate Email</span>
+        ✨ Generate Email
       </button>
 
-      <div id="loader" class="hidden">Generating with AI...</div>
+      <div id="loader" class="hidden">Generating with AI…</div>
     </section>
 
-    <section class="glass output">
+    <!-- Output Card -->
+    <section class="card glass output">
       <h3>Generated Email</h3>
-      <div id="result">Your AI-generated email will appear here.</div>
+      <div id="result">
+        Your AI-generated email will appear here.
+      </div>
     </section>
 
+    <!-- Footer -->
     <footer>
-      <span>IBM SkillsBuild | GenAI Capstone</span>
+      <span>IBM SkillsBuild · GenAI Capstone · CSRBOX</span>
     </footer>
   </main>
 
-  <script src="app.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
