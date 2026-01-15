@@ -4,35 +4,40 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>AI Email Generator</title>
-  <link rel="stylesheet" href="style.css" />
+
+  <link rel="stylesheet" href="styles.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-  <div class="container">
+  <div class="bg"></div>
+
+  <main class="app">
     <header>
-      <h1>🤖 AI Email Generator</h1>
-      <p>Generate professional emails instantly using Generative AI</p>
+      <h1>AI Email Generator</h1>
+      <p>Generate professional emails using Generative AI</p>
     </header>
 
-    <section class="card">
-      <label for="prompt">Describe your email</label>
-      <textarea id="prompt" placeholder="Example: Write a professional leave email to my manager for 2 days"></textarea>
+    <section class="glass">
+      <textarea id="prompt" placeholder="Example: Write a professional leave email to my manager"></textarea>
 
-      <button id="generateBtn">✨ Generate Email</button>
+      <button id="generateBtn">
+        <span>Generate Email</span>
+      </button>
 
-      <div id="loading" class="hidden">⏳ Generating email...</div>
+      <div id="loader" class="hidden">Generating with AI...</div>
     </section>
 
-    <section class="output-card">
-      <h2>📩 Generated Email</h2>
-      <pre id="result">Your generated email will appear here...</pre>
+    <section class="glass output">
+      <h3>Generated Email</h3>
+      <div id="result">Your AI-generated email will appear here.</div>
     </section>
 
     <footer>
-      <p>Powered by <strong>Google Gemini AI</strong> | Deployed on <strong>Render & Vercel</strong></p>
+      <span>IBM SkillsBuild | GenAI Capstone</span>
     </footer>
-  </div>
+  </main>
 
-  <script src="script.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
